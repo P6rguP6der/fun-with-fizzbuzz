@@ -15,27 +15,20 @@ BEGIN_LOOP:
 	is_fizz = ((num % 3) == 0);
 	is_buzz = ((num % 5) == 0);
 
-	if (is_fizz && is_buzz) goto FIZZBUZZ;
-	else if (is_fizz && !is_buzz) goto FIZZ;
-	else if (!is_fizz && is_buzz) goto BUZZ;
-	else goto NUMBER;
+	if (is_fizz && is_buzz) {
+		printf("FIZZBUZZ\n");
+		goto INCREMENT_COUNTER;
+	} else if (is_fizz && !is_buzz) {
+		printf("FIZZ\n");
+		goto INCREMENT_COUNTER;
+	} else if (!is_fizz && is_buzz) {
+		printf("BUZZ\n");
+		goto INCREMENT_COUNTER;
+	} else {
+		printf("%d\n", num);
+	}
 
-FIZZBUZZ:
-	printf("FIZZBUZZ\n");
-	goto INCREASE_LOOP;
-
-FIZZ:
-	printf("FIZZ\n");
-	goto INCREASE_LOOP;
-
-BUZZ:
-	printf("BUZZ\n");
-	goto INCREASE_LOOP;
-
-NUMBER:
-	printf("%d\n", num);
-
-INCREASE_LOOP:
+INCREMENT_COUNTER:
 	num++;
 	goto BEGIN_LOOP;
 
